@@ -43,6 +43,7 @@ const startServer = () => {
   console.log("Starting server...");
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
+    console.log("Application deployed successfully!");
   });
 };
 
