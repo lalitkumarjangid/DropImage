@@ -9,7 +9,15 @@ dotenv.config();
 
 const app = express();
 // app.use(fileUpload());
-app.use(cors());
+
+const corsOptions = {
+  origin: true, // Allow all origins
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
