@@ -22,6 +22,7 @@ app.use(express.json());
 
 const port = process.env.PORT || 5000;
 
+// Connect to MongoDB
 const connectDB = async () => {
   try {
     console.log("Attempting to connect to MongoDB...");
@@ -37,8 +38,10 @@ const connectDB = async () => {
   }
 };
 
+// Apply routes
 app.use("/", routes);
 
+// Start server
 const startServer = () => {
   console.log("Starting server...");
   app.listen(port, () => {
@@ -49,4 +52,6 @@ const startServer = () => {
 
 connectDB();
 
-export { app, connectDB, startServer };
+// If running in serverless environments like AWS Lambda or Vercel, 
+// export the app as a default export.
+export default app;
