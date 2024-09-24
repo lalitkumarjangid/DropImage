@@ -19,7 +19,12 @@ const Dashboard = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/getImage`);
+        const response = await axios.post(`${BASE_URL}/getImage`, dataToSend, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*', // This header is typically set by the server
+            },
+          });
       setImages(response.data.images);
     } catch (error) {
       console.error("Error fetching images:", error);
@@ -36,6 +41,7 @@ const Dashboard = () => {
       const response = await axios.post(`${BASE_URL}/uploadImage`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          'Access-Control-Allow-Origin': '*', 
         },
       });
       setMessage("Image uploaded successfully!");

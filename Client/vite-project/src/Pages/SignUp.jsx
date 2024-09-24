@@ -29,9 +29,14 @@ const SignUp = () => {
     // Combine firstName and lastName into username
     const username = `${formData.firstName} ${formData.lastName}`;
     const dataToSend = { ...formData, username };
-
+  
     try {
-      const response = await axios.post(`${BASE_URL}/signup`, dataToSend);
+      const response = await axios.post(`${BASE_URL}/signup`, dataToSend, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // This header is typically set by the server
+        },
+      });
       setMessage('Sign up successful!');
       toast.success('Sign up successful!');
     } catch (error) {

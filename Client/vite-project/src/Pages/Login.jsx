@@ -16,7 +16,13 @@ const Login = () => {
     const dataToSend = { email, password };
 
     try {
-      const response = await axios.post(`${BASE_URL}/login`, dataToSend);
+        const response = await axios.post(`${BASE_URL}/login`, dataToSend, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*', // This header is typically set by the server
+            },
+          });
+
       setMessage('Login successful!');
       toast.success('Login successful!');
       // Navigate to a different page on successful login, e.g., dashboard
