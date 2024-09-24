@@ -1,10 +1,11 @@
 {
-  "name": "your-project-name",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "npm run dev",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "axios": "^1.7.7",
